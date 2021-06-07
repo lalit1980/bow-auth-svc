@@ -1,0 +1,70 @@
+# Spring boot settings
+spring:
+  profiles: kubernetes
+  application:
+    name: bow-product-svc
+  servlet:
+    multipart:
+      maxRequestSize: 70000000
+      maxFileSize: 70000000
+  main:
+    allow-bean-definition-overriding: true
+
+  jmx:
+    enabled: false
+
+  data:
+    mongodb:
+      uri: ${MONGO_URL}
+
+# --------------------------------------------------------------------------------------------------
+mongo:
+  min-connections: 2
+  max-connections: 5
+  connect-timeout-ms: 5000
+  socket-timeout-ms: 5000
+
+# --------------------------------------------------------------------------------------------------
+
+# The embedded server settings
+server:
+  address: 0.0.0.0
+  port: 9010
+
+# --------------------------------------------------------------------------------------------------
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui-custom.html
+
+
+# Customise active actuator endpoints
+endpoints:
+  configprops:
+    enabled: false
+  info:
+    enabled: false
+  shutdown:
+    enabled: false
+
+# --------------------------------------------------------------------------------------------------
+dataflag:
+  mockdata: true
+files:
+  folder: ${FILE_PATH}
+  max: 10000
+
+amazonProperties:
+  endpointUrl: ${AWS_ENDPOINT_URL}
+  accessKey: ${AWS_ACCESS_KEY}
+  secretKey: ${AWS_SECRET_KEY}
+  bucketName: ${AWS_BUCKET_NAME}
+com:
+  kb:
+    jwt:
+      aws:
+        userPoolId: ${AWS_COGNITO_POOL_ID}
+        region: ${AWS_REGION}

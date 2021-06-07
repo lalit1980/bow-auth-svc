@@ -1,0 +1,78 @@
+# Spring boot settings
+spring:
+  profiles: dev
+  application:
+    name: bow-auth-svc
+  servlet:
+    multipart:
+      maxRequestSize: 70000000
+      maxFileSize: 70000000
+  main:
+    allow-bean-definition-overriding: true
+
+  jmx:
+    enabled: false
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: authsvc
+
+# --------------------------------------------------------------------------------------------------
+mongo:
+  min-connections: 2
+  max-connections: 5
+  connect-timeout-ms: 5000
+  socket-timeout-ms: 5000
+
+# --------------------------------------------------------------------------------------------------
+
+# The embedded server settings
+server:
+  address: localhost
+  port: 8082
+
+# --------------------------------------------------------------------------------------------------
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui-custom.html
+
+
+# Customise active actuator endpoints
+endpoints:
+  configprops:
+    enabled: false
+  info:
+    enabled: false
+  shutdown:
+    enabled: false
+
+# --------------------------------------------------------------------------------------------------
+dataflag:
+  mockdata: true
+files:
+  folder: /Users/apple/classic
+  max: 10000
+
+amazonProperties:
+  endpointUrl: https://s3.ap-south-1.amazonaws.com
+  accessKey: AKIAI3YUCOGLGYGO4R7A
+  secretKey: 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
+  bucketName: boozeonwheel.com
+
+com:
+  kb:
+    jwt:
+      aws:
+        userPoolId: "ap-southeast-1_9wC7uOD0K"
+        region: "ap-southeast-1"
+
+bow:
+  app:
+    jwtSecret: bezKoderSecretKey
+    jwtExpirationMs: 86400000
