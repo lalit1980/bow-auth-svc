@@ -19,7 +19,7 @@ public class Users {
     private String username;
     private String email;
     private String password;
-    private Set<Roles> roles = new HashSet<Roles>();
+    private Set<Role> roles = new HashSet<Role>();
     public Users(String username, String email, String password) {
         this.username = username;
         this.email = email;
