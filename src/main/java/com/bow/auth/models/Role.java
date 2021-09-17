@@ -11,10 +11,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @ToString
 @NoArgsConstructor
-@Document(collection = "Roles")
-public class Roles {
+@Document(collection = "roles")
+public class Role {
     @Id
     private String id;
+
     private ERole name;
 
 }

@@ -1,11 +1,11 @@
 
 node{
         def DOCKER_HUB_ACCOUNT = "lalit1980"
-        def DOCKER_IMAGE_NAME  = "bow-product-svc"
+        def DOCKER_IMAGE_NAME  = "bow-auth-svc"
         def TAG_NUMBER = "${env.BUILD_NUMBER}"
         def BRANCH = "${env.BRANCH_NAME}"
         stage("SCM Checkout"){
-            git branch: 'develop', credentialsId: 'GITHUB_CREDENTIAL1', url: 'https://github.com/lalit1980/bow-product-svc.git'
+            git branch: 'develop', credentialsId: 'GITHUB_CREDENTIAL1', url: 'https://github.com/lalit1980/bow-auth-svc.git'
         }
         stage("Unit Test & App Scan"){
             echo "Unit Test Case Execution started...."
@@ -35,8 +35,6 @@ node{
       stage("K8S Deployment"){
             echo "Kubernetes deployment started....."
             sh "chmod +x changeTag.sh"
-                sh "chmod 400 nishu_bow.pem"
-                sh "chmod 400 ansible.pem"
                 sh "./changeTag.sh ${TAG_NUMBER}"
                 sshagent(['KOPS-WORKSTATION']) {
                     sh "ssh -i nishu_bow.pem ubuntu@ec2-52-74-34-239.ap-southeast-1.compute.amazonaws.com rm -rf /home/ubuntu/bow/api/"
