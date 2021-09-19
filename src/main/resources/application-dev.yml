@@ -9,6 +9,11 @@ spring:
       maxFileSize: 70000000
   main:
     allow-bean-definition-overriding: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_FSX6yqAUv
 
   jmx:
     enabled: false
@@ -35,14 +40,6 @@ server:
 
 # --------------------------------------------------------------------------------------------------
 
-springdoc:
-  api-docs:
-    enabled: true
-    path: /api-docs
-  swagger-ui:
-    path: /swagger-ui-custom.html
-
-
 # Customise active actuator endpoints
 endpoints:
   configprops:
@@ -52,27 +49,21 @@ endpoints:
   shutdown:
     enabled: false
 
-# --------------------------------------------------------------------------------------------------
-dataflag:
-  mockdata: true
-files:
-  folder: /Users/apple/classic
-  max: 10000
 
-amazonProperties:
-  endpointUrl: https://s3.ap-south-1.amazonaws.com
-  accessKey: AKIAI3YUCOGLGYGO4R7A
-  secretKey: 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
-  bucketName: boozeonwheel.com
-
-com:
-  kb:
-    jwt:
-      aws:
-        userPoolId: "ap-southeast-1_9wC7uOD0K"
-        region: "ap-southeast-1"
 
 bow:
   app:
     jwtSecret: bezKoderSecretKey
     jwtExpirationMs: 86400000
+
+aws:
+  access-key: AKIAYHND4XDR6YS4TEEA
+  access-secret: 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
+  default-region: ap-southeast-1
+  cognito:
+    clientId: 5s0mcs7ukg98n5h0tpftqn68mv
+    userPoolId: ap-southeast-1_FSX6yqAUv
+    region: ap-southeast-1
+    connectionTimeout: 2000
+    readTimeout: 2000
+    jwk: https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_FSX6yqAUv/.well-known/jwks.json
