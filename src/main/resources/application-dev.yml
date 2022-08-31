@@ -9,11 +9,6 @@ spring:
       maxFileSize: 70000000
   main:
     allow-bean-definition-overriding: true
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_FSX6yqAUv
 
   jmx:
     enabled: false
@@ -60,10 +55,4 @@ aws:
   access-key: AKIAYHND4XDR6YS4TEEA
   access-secret: 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
   default-region: ap-southeast-1
-  cognito:
-    clientId: 5s0mcs7ukg98n5h0tpftqn68mv
-    userPoolId: ap-southeast-1_FSX6yqAUv
-    region: ap-southeast-1
-    connectionTimeout: 2000
-    readTimeout: 2000
-    jwk: https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_FSX6yqAUv/.well-known/jwks.json
+

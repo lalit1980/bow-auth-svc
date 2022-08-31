@@ -17,9 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.util.Arrays;
-import java.util.List;
-
 
 @Configuration
 @EnableWebSecurity
@@ -33,12 +30,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
-
-    public static final String SIGNUP_URL = "/api/users/sign-up";
-    public static final String SIGNIN_URL = "/api/users/sign-in";
-
-    public static final String DB_SIGNUP_URL = "/api/auth/signup";
-    public static final String DB_SIGNIN_URL = "/api/auth/signin";
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
@@ -63,15 +54,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        List<String> permitAllEndpointList = Arrays.asList(SIGNUP_URL, SIGNIN_URL,DB_SIGNUP_URL,DB_SIGNIN_URL);
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests(expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry
-                        .antMatchers(permitAllEndpointList
-                                .toArray(new String[permitAllEndpointList.size()]))
-                        .permitAll().anyRequest().authenticated())
-                .oauth2ResourceServer().jwt();
+                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/test/**").permitAll()
+                .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }

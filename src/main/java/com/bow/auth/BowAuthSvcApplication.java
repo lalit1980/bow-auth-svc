@@ -1,5 +1,8 @@
 package com.bow.auth;
 
+import com.bow.auth.models.Role;
+import com.bow.auth.repository.RoleRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -62,9 +62,3 @@ amazonProperties:
   accessKey: ${AWS_ACCESS_KEY}
   secretKey: ${AWS_SECRET_KEY}
   bucketName: ${AWS_BUCKET_NAME}
-com:
-  kb:
-    jwt:
-      aws:
-        userPoolId: ${AWS_COGNITO_POOL_ID}
-        region: ${AWS_REGION}
