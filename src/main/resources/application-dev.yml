@@ -48,11 +48,11 @@ endpoints:
 
 bow:
   app:
-    jwtSecret: bezKoderSecretKey
+    jwtSecret: 
     jwtExpirationMs: 86400000
 
 aws:
-  access-key: AKIAYHND4XDR6YS4TEEA
-  access-secret: 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
+  access-key: 
+  access-secret: 
   default-region: ap-southeast-1
 
